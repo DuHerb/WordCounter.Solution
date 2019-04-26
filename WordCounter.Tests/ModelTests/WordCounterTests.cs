@@ -21,6 +21,7 @@ namespace WordCounterTests
             WordCounter newWordCounter = new WordCounter("cat");
 
             string result = newWordCounter.GetTargetWord();
+
             Assert.AreEqual(targetWord, result);
         }
 
@@ -33,6 +34,7 @@ namespace WordCounterTests
 
             newCounter.SetTargetWord(newTarget);
             string result = newCounter.GetTargetWord();
+
             Assert.AreEqual(newTarget, result);
         }
 
@@ -46,6 +48,7 @@ namespace WordCounterTests
 
             newCounter.ScanForTarget(stringToScan);
             int result = newCounter.GetTargetCount();
+
             Assert.AreEqual(expectedOutput, result);
         }
 
@@ -57,6 +60,7 @@ namespace WordCounterTests
             int expectedOutput = 0;
 
             int result = newCounter.GetTargetCount();
+
             Assert.AreEqual(expectedOutput, result);
         }
 
@@ -66,7 +70,9 @@ namespace WordCounterTests
             string userTarget = "dog";
             bool expected = true;
             WordCounter newCounter = new WordCounter(userTarget);
+
             bool result = newCounter.IsTargetValid(userTarget);
+
             Assert.AreEqual(expected, result);
         }
 
@@ -80,6 +86,7 @@ namespace WordCounterTests
 
             newCounter.ScanForPlurals(stringToScan);
             int result = newCounter.GetPluralCount();
+
             Assert.AreEqual(expectedOutput, result);
         }
 
@@ -91,6 +98,17 @@ namespace WordCounterTests
             int expectedOutput = 0;
 
             int result = newCounter.GetPluralCount();
+            Assert.AreEqual(expectedOutput, result);
+        }
+
+        [TestMethod]
+        public void GetPartialCount_ReturnNumberOfPartialMatches_ing()
+        {
+            string targetWord = "dog";
+            WordCounter newCounter = new WordCounter(targetWord);
+            int expectedOutput = 0;
+
+            int result = newCounter.GetPartialCount();
             Assert.AreEqual(expectedOutput, result);
         }
     }

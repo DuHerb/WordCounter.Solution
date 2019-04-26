@@ -9,6 +9,8 @@ namespace WordCounterModels
         private int _targetCount = 0;
         private int _pluralTargetCount = 0;
 
+        private int _partialTargetCount = 0;
+
         public WordCounter (string userInput)
         {
             _targetWord = userInput;
@@ -36,6 +38,11 @@ namespace WordCounterModels
         public int GetPluralCount()
         {
             return _pluralTargetCount;
+        }
+
+        public int GetPartialCount()
+        {
+            return _partialTargetCount;
         }
 
         public void SetTargetWord(string newTargetWord)
