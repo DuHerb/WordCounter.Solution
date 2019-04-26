@@ -70,18 +70,18 @@ namespace WordCounterTests
             Assert.AreEqual(expected, result);
         }
 
-        // [TestMethod]
-        // public void ScanForPlurals_ScanForPluralInstancesOfTarget_ing()
-        // {
-        //     string targetWord = "dog";
-        //     string stringToScan = "I own several dogs";
-        //     WordCounter newCounter = new WordCounter(targetWord);
-        //     int expectedOutput = 1;
+        [TestMethod]
+        public void ScanForPlurals_ScanForPluralInstancesOfTarget_ing()
+        {
+            string targetWord = "dog";
+            string stringToScan = "My dog owns several dogs that love hot dogs";
+            WordCounter newCounter = new WordCounter(targetWord);
+            int expectedOutput = 2;
 
-        //     newCounter.ScanForPlurals(stringToScan);
-        //     int result = newCounter.GetPluralCount();
-        //     Assert.AreEqual(expectedOutput, result);
-        // }
+            newCounter.ScanForPlurals(stringToScan);
+            int result = newCounter.GetPluralCount();
+            Assert.AreEqual(expectedOutput, result);
+        }
 
         [TestMethod]
         public void GetPluralCount_ReturnNumberOfPluralMatches_int()

@@ -56,5 +56,19 @@ namespace WordCounterModels
                 }
             }
         }
+
+        public void ScanForPlurals(string userString)
+        {
+            string stringToScan = userString;
+            string[] scanArray = stringToScan.Split(' ');
+
+            foreach(String word in scanArray)
+            {
+                if(word == _targetWord + "s")
+                {
+                    _pluralTargetCount ++;
+                }
+            }
+        }
     }
 }
