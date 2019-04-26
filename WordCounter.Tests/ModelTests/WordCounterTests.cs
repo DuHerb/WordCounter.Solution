@@ -59,5 +59,15 @@ namespace WordCounterTests
             int result = newCounter.GetTargetCount();
             Assert.AreEqual(expectedOutput, result);
         }
+
+        [TestMethod]
+        public void IsTargetValid_CheckIfTargetWordIsAString_True()
+        {
+            string userTarget = "dog";
+            bool expected = true;
+            WordCounter newCounter = new WordCounter(userTarget);
+            bool result = newCounter.IsTargetValid(userTarget);
+            Assert.AreEqual(expected, result);
+        }
     }
 }

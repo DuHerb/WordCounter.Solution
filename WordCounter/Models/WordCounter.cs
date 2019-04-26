@@ -13,6 +13,15 @@ namespace WordCounterModels
             _targetWord = userInput;
         }
 
+        public bool IsTargetValid(string userInput)
+        {
+            if(typeof(string) == userInput.GetType())
+            {
+                return true;
+            }
+            return false;
+        }
+
         public string GetTargetWord()
         {
             return _targetWord;
