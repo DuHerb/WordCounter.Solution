@@ -67,15 +67,33 @@ namespace WordCounterModels
         public void ScanForPlurals(string userString)
         {
             string stringToScan = userString;
-            string[] scanArray = stringToScan.Split(' ');
+            string[] arrayToScan = stringToScan.Split(' ');
 
-            foreach(String word in scanArray)
+            foreach(String word in arrayToScan)
             {
                 if(word == _targetWord + "s")
                 {
                     _pluralTargetCount ++;
                 }
             }
+        }
+
+        public List<string> ScanForPartials(string userString)
+        {
+            string stringToScan = userString;
+            string[] arrayToScan = stringToScan.Split(' ');
+            List<string> partialMatches = new List<string> {};
+
+            foreach(String word in arrayToScan)
+            {
+                if(word.Contains(_targetWord) && word != _targetWord && word != _targetWord + "s")
+                {
+                    partialMatches.Add(word);
+                    _partialTargetCount ++;
+                }
+            }
+
+            return partialMatches;
         }
     }
 }

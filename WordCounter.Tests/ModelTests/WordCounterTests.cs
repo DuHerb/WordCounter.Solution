@@ -44,12 +44,12 @@ namespace WordCounterTests
             string targetWord = "dog";
             string stringToScan = "I own a dog";
             WordCounter newCounter = new WordCounter(targetWord);
-            int expectedOutput = 1;
+            int expected = 1;
 
             newCounter.ScanForTarget(stringToScan);
             int result = newCounter.GetTargetCount();
 
-            Assert.AreEqual(expectedOutput, result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -57,11 +57,11 @@ namespace WordCounterTests
         {
             string targetWord = "dog";
             WordCounter newCounter = new WordCounter(targetWord);
-            int expectedOutput = 0;
+            int expected = 0;
 
             int result = newCounter.GetTargetCount();
 
-            Assert.AreEqual(expectedOutput, result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -77,39 +77,56 @@ namespace WordCounterTests
         }
 
         [TestMethod]
-        public void ScanForPlurals_ScanForPluralInstancesOfTarget_ing()
+        public void ScanForPlurals_ScanForPluralInstancesOfTarget_int()
         {
             string targetWord = "dog";
             string stringToScan = "My dog owns several dogs that love hot dogs";
             WordCounter newCounter = new WordCounter(targetWord);
-            int expectedOutput = 2;
+            int expected = 2;
 
             newCounter.ScanForPlurals(stringToScan);
             int result = newCounter.GetPluralCount();
 
-            Assert.AreEqual(expectedOutput, result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void GetPluralCount_ReturnNumberOfPluralMatches_int()
+        public void GetPluralCount_ReturnNumberOfPluralTarget_int()
         {
             string targetWord = "dog";
             WordCounter newCounter = new WordCounter(targetWord);
-            int expectedOutput = 0;
+            int expected = 0;
 
             int result = newCounter.GetPluralCount();
-            Assert.AreEqual(expectedOutput, result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
-        public void GetPartialCount_ReturnNumberOfPartialMatches_ing()
+        public void GetPartialCount_ReturnNumberOfPartialMatches_int()
         {
             string targetWord = "dog";
             WordCounter newCounter = new WordCounter(targetWord);
-            int expectedOutput = 0;
+            int expected = 0;
 
             int result = newCounter.GetPartialCount();
-            Assert.AreEqual(expectedOutput, result);
+            Assert.AreEqual(expected, result);
+        }
+        //This test is not done.  Would like to check a bool value between expected List<string<
+        //and returned List<string>
+        [TestMethod]
+        public void ScanForPartials_ReturnListofPartialTargetMatches_List()
+        {
+            string targetWord = "dog";
+            string stringToScan = "doggies like dogtreats shaped like dogs dog";
+            List<string> testList = new List<string> { "doggies", "dogtreats" };
+            WordCounter newCounter = new WordCounter(targetWord);
+            int expectedLength = 2;
+            // bool expected = true;
+
+            List<string> returnedList = newCounter.ScanForPartials(stringToScan);
+            // bool result = testList.Equals(returnedList);
+            int resultLength = returnedList.Count;
+            Assert.AreEqual(expectedLength, resultLength);
         }
     }
 }
