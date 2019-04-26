@@ -92,7 +92,6 @@ namespace WordCounterModels
                     _partialTargetCount ++;
                 }
             }
-
             return partialMatches;
         }
     }
