@@ -35,5 +35,17 @@ namespace WordCounterTests
             string result = newCounter.GetTargetWord();
             Assert.AreEqual(newTarget, result);
         }
+
+        [TestMethod]
+        public void ScanForTarget_ScanStringForTargetWord_Int()
+        {
+            string targetWord = "dog";
+            string stringToScan = "I own a dog";
+            WordCounter newCounter = new WordCounter(targetWord);
+            int expectedOutput = 1;
+
+            int result = newCounter.ScanForTarget(stringToScan);
+            Assert.AreEqual(expectedOutput, result);
+        }
     }
 }
