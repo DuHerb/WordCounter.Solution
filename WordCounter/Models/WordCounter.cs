@@ -16,5 +16,10 @@ namespace WordCounterModels
         {
             return _targetWord;
         }
+
+        public void SetTargetWord(string newTargetWord)
+        {
+            _targetWord = newTargetWord;
+        }
     }
 }
