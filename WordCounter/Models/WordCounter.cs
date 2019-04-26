@@ -7,6 +7,7 @@ namespace WordCounterModels
     {
         private string _targetWord;
         private int _targetCount = 0;
+        private int _pluralTargetCount = 0;
 
         public WordCounter (string userInput)
         {
@@ -30,6 +31,11 @@ namespace WordCounterModels
         public int GetTargetCount()
         {
             return _targetCount;
+        }
+
+        public int GetPluralCount()
+        {
+            return _pluralTargetCount;
         }
 
         public void SetTargetWord(string newTargetWord)

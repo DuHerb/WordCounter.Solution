@@ -69,5 +69,29 @@ namespace WordCounterTests
             bool result = newCounter.IsTargetValid(userTarget);
             Assert.AreEqual(expected, result);
         }
+
+        // [TestMethod]
+        // public void ScanForPlurals_ScanForPluralInstancesOfTarget_ing()
+        // {
+        //     string targetWord = "dog";
+        //     string stringToScan = "I own several dogs";
+        //     WordCounter newCounter = new WordCounter(targetWord);
+        //     int expectedOutput = 1;
+
+        //     newCounter.ScanForPlurals(stringToScan);
+        //     int result = newCounter.GetPluralCount();
+        //     Assert.AreEqual(expectedOutput, result);
+        // }
+
+        [TestMethod]
+        public void GetPluralCount_ReturnNumberOfPluralMatches_int()
+        {
+            string targetWord = "dog";
+            WordCounter newCounter = new WordCounter(targetWord);
+            int expectedOutput = 0;
+
+            int result = newCounter.GetPluralCount();
+            Assert.AreEqual(expectedOutput, result);
+        }
     }
 }
