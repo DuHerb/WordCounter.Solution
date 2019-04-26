@@ -6,7 +6,7 @@ namespace WordCounterModels
     public class WordCounter
     {
         private string _targetWord;
-        private int _targetCount;
+        private int _targetCount = 0;
 
         public WordCounter (string userInput)
         {
@@ -18,12 +18,17 @@ namespace WordCounterModels
             return _targetWord;
         }
 
+        public int GetTargetCount()
+        {
+            return _targetCount;
+        }
+
         public void SetTargetWord(string newTargetWord)
         {
             _targetWord = newTargetWord;
         }
 
-        public int ScanForTarget(string userString)
+        public void ScanForTarget(string userString)
         {
             string stringToScan = userString;
             string[] scanArray = stringToScan.Split(' ');
@@ -35,7 +40,6 @@ namespace WordCounterModels
                     _targetCount ++;
                 }
             }
-            return _targetCount;
         }
     }
 }
