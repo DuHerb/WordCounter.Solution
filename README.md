@@ -38,8 +38,6 @@ is used in a sentence, or number of sentences that are subsequently provided by 
 
 Contact Dustin Herboldshimer at dustnpdx@gmail.com
 
-## Technologies Used
-
 
 ### License
 
