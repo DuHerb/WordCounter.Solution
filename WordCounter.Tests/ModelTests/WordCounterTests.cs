@@ -111,22 +111,17 @@ namespace WordCounterTests
             int result = newCounter.GetPartialCount();
             Assert.AreEqual(expected, result);
         }
-        //This test is not done.  Would like to check a bool value between expected List<string<
-        //and returned List<string>
+
         [TestMethod]
         public void ScanForPartials_ReturnListofPartialTargetMatches_List()
         {
             string targetWord = "dog";
-            string stringToScan = "doggies like dogtreats shaped like dogs dog";
-            List<string> testList = new List<string> { "doggies", "dogtreats" };
+            string stringToScan = "doggies like dogtreats shaped like dogs";
+            List<string> expectedList = new List<string> { "doggies", "dogtreats" };
             WordCounter newCounter = new WordCounter(targetWord);
-            int expectedLength = 2;
-            // bool expected = true;
 
             List<string> returnedList = newCounter.ScanForPartials(stringToScan);
-            // bool result = testList.Equals(returnedList);
-            int resultLength = returnedList.Count;
-            Assert.AreEqual(expectedLength, resultLength);
+            CollectionAssert.AreEqual(expectedList, returnedList);
         }
     }
 }
