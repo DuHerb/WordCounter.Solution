@@ -6,8 +6,14 @@ using System.Collections.Generic;
 namespace WordCounterTests
 {
         [TestClass]
-    public class WordCounterTests
+    public class WordCounterTests : IDisposable
     {
+
+        public void Dispose()
+        {
+            WordCounter.ClearAll();
+        }
+
         [TestMethod]
         public void WordCounterConstructor_CreateObjectInstance_WordCounter()
         {
@@ -122,6 +128,20 @@ namespace WordCounterTests
 
             List<string> returnedList = newCounter.ScanForPartials(stringToScan);
             CollectionAssert.AreEqual(expectedList, returnedList);
+        }
+
+        [TestMethod]
+        public void GetAll_ReturnsListOfWordCounters_List()
+        {
+            string targetWord1 = "cat";
+            string targetWord2 = "dog";
+            WordCounter counter1 = new WordCounter(targetWord1);
+            WordCounter counter2 = new WordCounter(targetWord2);
+
+            List<WordCounter> expected = new List<WordCounter> { counter1, counter2};
+
+            List<WordCounter> result = WordCounter.GetAll();
+            CollectionAssert.AreEqual(expected, result);
         }
     }
 }
