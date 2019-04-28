@@ -11,9 +11,12 @@ namespace WordCounterModels
 
         private int _partialTargetCount = 0;
 
+        private static List<WordCounter> _counterList = new List<WordCounter> {};
+
         public WordCounter (string userInput)
         {
             _targetWord = userInput;
+            _counterList.Add(this);
         }
 
         public bool IsTargetValid(string userInput)
@@ -45,10 +48,8 @@ namespace WordCounterModels
             return _partialTargetCount;
         }
 
-        public void SetTargetWord(string newTargetWord)
-        {
-            _targetWord = newTargetWord;
-        }
+        public void SetTargetWord(string newTargetWord) => _targetWord = newTargetWord;
+
 
         public void ScanForTarget(string userString)
         {
@@ -94,5 +95,12 @@ namespace WordCounterModels
             }
             return partialMatches;
         }
+
+        public static List<WordCounter> GetAll()
+        {
+            return _counterList;
+        }
+
+        public static void ClearAll() => _counterList.Clear();
     }
 }
