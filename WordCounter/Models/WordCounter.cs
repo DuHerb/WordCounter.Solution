@@ -1,25 +1,27 @@
 using System;
 using System.Collections.Generic;
 
-namespace WordCounterModels
+namespace WordCounter.Models
 {
     public class Counter
     {
         private string _targetWord;
+        private string _targetPhrase;
         private int _targetCount = 0;
-        private int _pluralTargetCount = 0;
-
-        private int _partialTargetCount = 0;
-
+        private int _pluralCount = 0;
+        private int _partialCount = 0;
         private static List<Counter> _counterList = new List<Counter> {};
 
-        public Counter(string userInput)
+        //Constructor
+        public Counter(string userWord, string userPhrase)
         {
-            _targetWord = userInput;
+            _targetWord = userWord;
+            _targetPhrase = userPhrase;
             _counterList.Add(this);
         }
 
-        public bool IsTargetValid(string userInput)
+        //Validate input data type
+        public bool IsValidData(string userInput)
         {
             if(typeof(string) == userInput.GetType())
             {
@@ -28,35 +30,19 @@ namespace WordCounterModels
             return false;
         }
 
-        public string GetTargetWord()
+        //Getter/Setters
+        public string TargetWord { get => _targetWord; set => _targetWord = value;}
+        public string TargetPhrase { get => _targetPhrase; set => _targetPhrase = value;}
+        public int TargetCount { get => _targetCount; set => _targetCount = value;}
+        public int PluralCount { get => _pluralCount; set => _pluralCount = value;}
+        public int PartialCount { get => _partialCount; set => _partialCount = value;}
+
+        public void ScanForTarget()
         {
-            return _targetWord;
-        }
+            // string phraseToScan = _targetPhrase;
+            string[] arrayToScan = _targetPhrase.Split(' ');
 
-        public int GetTargetCount()
-        {
-            return _targetCount;
-        }
-
-        public int GetPluralCount()
-        {
-            return _pluralTargetCount;
-        }
-
-        public int GetPartialCount()
-        {
-            return _partialTargetCount;
-        }
-
-        public void SetTargetWord(string newTargetWord) => _targetWord = newTargetWord;
-
-
-        public void ScanForTarget(string userString)
-        {
-            string stringToScan = userString;
-            string[] scanArray = stringToScan.Split(' ');
-
-            foreach(String word in scanArray)
+            foreach(String word in arrayToScan)
             {
                 if(word == _targetWord)
                 {
@@ -65,24 +51,25 @@ namespace WordCounterModels
             }
         }
 
-        public void ScanForPlurals(string userString)
+        //Scan Methods
+        public void ScanForPlurals()
         {
-            string stringToScan = userString;
-            string[] arrayToScan = stringToScan.Split(' ');
+            // string phraseToScan = _targetPhrase;
+            string[] arrayToScan = _targetPhrase.Split(' ');
 
             foreach(String word in arrayToScan)
             {
                 if(word == _targetWord + "s")
                 {
-                    _pluralTargetCount ++;
+                    _pluralCount ++;
                 }
             }
         }
 
-        public List<string> ScanForPartials(string userString)
+        public List<string> ScanForPartials()
         {
-            string stringToScan = userString;
-            string[] arrayToScan = stringToScan.Split(' ');
+            // string phraseToScan = _targetPhrase;
+            string[] arrayToScan = _targetPhrase.Split(' ');
             List<string> partialMatches = new List<string> {};
 
             foreach(String word in arrayToScan)
@@ -90,12 +77,13 @@ namespace WordCounterModels
                 if(word.Contains(_targetWord) && word != _targetWord && word != _targetWord + "s")
                 {
                     partialMatches.Add(word);
-                    _partialTargetCount ++;
+                    _partialCount ++;
                 }
             }
             return partialMatches;
         }
 
+        //Static Methods
         public static List<Counter> GetAll()
         {
             return _counterList;

@@ -17,3 +17,6 @@
 /Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/obj/Debug/netcoreapp2.2/WordCounter.Tests.pdb
 /Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/obj/Debug/netcoreapp2.2/WordCounter.Tests.RazorAssemblyInfo.cache
 /Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/obj/Debug/netcoreapp2.2/WordCounter.Tests.RazorAssemblyInfo.cs
+/Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/bin/Debug/netcoreapp2.2/WordCounter.Views.dll
+/Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/bin/Debug/netcoreapp2.2/WordCounter.Views.pdb
+/Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/obj/Debug/netcoreapp2.2/WordCounter.Tests.RazorTargetAssemblyInfo.cache
