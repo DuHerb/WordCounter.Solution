@@ -13,13 +13,9 @@ namespace WordCounter.Tests
         [TestMethod]
         public void Index_ReturnsCorrectView_True()
         {
-            //Arrange
             HomeController controller = new HomeController();
-
-            //Act
             ActionResult indexView = controller.Index();
 
-            //Assert
             Assert.IsInstanceOfType(indexView, typeof(ViewResult));
         }
 
@@ -28,16 +24,35 @@ namespace WordCounter.Tests
         {
             WordCountersController controller = new WordCountersController();
             ActionResult newView = controller.New();
+
+            Assert.IsInstanceOfType(newView, typeof(ViewResult));
+        }
+
+        // [TestMethod]
+        // public void Create_RedirectsToCorrectAction_Index()
+        // {
+        //     WordCountersController controller = new WordCountersController();
+        //     RedirectToActionResult actionResult = controller.Create("dog", "walk the dog") as RedirectToActionResult;
+        //     string result = actionResult.ActionName;
+        //     Assert.AreEqual(result, "Index");
+        // }
+
+        [TestMethod]
+        public void Create_ReturnsCorrectView_True()
+        {
+            WordCountersController controller = new WordCountersController();
+            ActionResult newView = controller.Create("targetWord", "string targetPhrase");
+
             Assert.IsInstanceOfType(newView, typeof(ViewResult));
         }
 
         [TestMethod]
-        public void Create_RedirectsToCorrectAction_Index()
+        public void Create_HasCorrectModelType_newCounter()
         {
-            WordCountersController controller = new WordCountersController();
-            RedirectToActionResult actionResult = controller.Create("dog", "walk the dog") as RedirectToActionResult;
-            string result = actionResult.ActionName;
-            Assert.AreEqual(result, "Index");
+            ViewResult createView = new WordCountersController().Create("word", "target word") as ViewResult;
+            var result = createView.ViewData.Model;
+
+            Assert.IsInstanceOfType(result, typeof(Counter));
         }
     }
 }

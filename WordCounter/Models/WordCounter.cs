@@ -17,6 +17,9 @@ namespace WordCounter.Models
         {
             _targetWord = userWord;
             _targetPhrase = userPhrase;
+            ScanForTarget();
+            ScanForPlurals();
+            ScanForPartials();
             _counterList.Add(this);
         }
 
@@ -66,7 +69,7 @@ namespace WordCounter.Models
             }
         }
 
-        public List<string> ScanForPartials()
+        public void ScanForPartials()
         {
             // string phraseToScan = _targetPhrase;
             string[] arrayToScan = _targetPhrase.Split(' ');
@@ -80,7 +83,6 @@ namespace WordCounter.Models
                     _partialCount ++;
                 }
             }
-            return partialMatches;
         }
 
         //Static Methods

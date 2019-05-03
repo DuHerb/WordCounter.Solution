@@ -32,3 +32,4 @@
 /Users/duherb/Desktop/WordCounter.Solution/WordCounter/obj/Debug/netcoreapp2.2/WordCounter.Views.pdb
 /Users/duherb/Desktop/WordCounter.Solution/WordCounter/obj/Debug/netcoreapp2.2/WordCounter.csproj.CopyComplete
 /Users/duherb/Desktop/WordCounter.Solution/WordCounter/obj/Debug/netcoreapp2.2/Razor/Views/WordCounters/New.g.cshtml.cs
+/Users/duherb/Desktop/WordCounter.Solution/WordCounter/obj/Debug/netcoreapp2.2/Razor/Views/WordCounters/Show.g.cshtml.cs
