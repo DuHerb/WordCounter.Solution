@@ -17,31 +17,20 @@ namespace WordCounterTests
         [TestMethod]
         public void CounterConstructor_CreateObjectInstance_Counter()
         {
-            Counter newCounter = new Counter("test");
+            Counter newCounter = new Counter("testWord", "testPhrase");
             Assert.AreEqual(typeof(Counter), newCounter.GetType());
         }
+
          [TestMethod]
         public void GetTargetWord_ReturnsTargetWord_String()
         {
             string targetWord = "cat";
-            Counter newCounter = new Counter("cat");
+            string targetPhrase = "I own one cat";
+            Counter newCounter = new Counter("cat", targetPhrase);
 
-            string result = newCounter.GetTargetWord();
+            string result = newCounter.TargetWord;
 
             Assert.AreEqual(targetWord, result);
-        }
-
-        [TestMethod]
-        public void SetTargetWord_SetTargetWord_String()
-        {
-            string oldTarget = "cat";
-            string newTarget = "dog";
-            Counter newCounter = new Counter(oldTarget);
-
-            newCounter.SetTargetWord(newTarget);
-            string result = newCounter.GetTargetWord();
-
-            Assert.AreEqual(newTarget, result);
         }
 
         [TestMethod]
@@ -49,11 +38,11 @@ namespace WordCounterTests
         {
             string targetWord = "dog";
             string stringToScan = "I own a dog";
-            Counter newCounter = new Counter(targetWord);
+            Counter newCounter = new Counter(targetWord, stringToScan);
             int expected = 1;
 
-            newCounter.ScanForTarget(stringToScan);
-            int result = newCounter.GetTargetCount();
+            newCounter.ScanForTarget();
+            int result = newCounter.TargetCount;
 
             Assert.AreEqual(expected, result);
         }
@@ -62,10 +51,11 @@ namespace WordCounterTests
         public void GetTargetCount_ReturnTargetCount_Int()
         {
             string targetWord = "dog";
-            Counter newCounter = new Counter(targetWord);
+            string targetPhrase = "i own a dog";
+            Counter newCounter = new Counter(targetWord, targetPhrase);
             int expected = 0;
 
-            int result = newCounter.GetTargetCount();
+            int result = newCounter.TargetCount;
 
             Assert.AreEqual(expected, result);
         }
@@ -74,10 +64,11 @@ namespace WordCounterTests
         public void IsTargetValid_CheckIfTargetWordIsAString_True()
         {
             string userTarget = "dog";
+            string userPhrase = "i own dog";
             bool expected = true;
-            Counter newCounter = new Counter(userTarget);
+            Counter newCounter = new Counter(userTarget, userPhrase);
 
-            bool result = newCounter.IsTargetValid(userTarget);
+            bool result = newCounter.IsValidData(userTarget);
 
             Assert.AreEqual(expected, result);
         }
@@ -86,12 +77,12 @@ namespace WordCounterTests
         public void ScanForPlurals_ScanForPluralInstancesOfTarget_int()
         {
             string targetWord = "dog";
-            string stringToScan = "My dog owns several dogs that love hot dogs";
-            Counter newCounter = new Counter(targetWord);
+            string targetPhrase = "My dog owns several dogs that love hot dogs";
+            Counter newCounter = new Counter(targetWord, targetPhrase);
             int expected = 2;
 
-            newCounter.ScanForPlurals(stringToScan);
-            int result = newCounter.GetPluralCount();
+            newCounter.ScanForPlurals();
+            int result = newCounter.PluralCount;
 
             Assert.AreEqual(expected, result);
         }
@@ -100,10 +91,11 @@ namespace WordCounterTests
         public void GetPluralCount_ReturnNumberOfPluralTarget_int()
         {
             string targetWord = "dog";
-            Counter newCounter = new Counter(targetWord);
+            string targetPhrase = "My cat is rude";
+            Counter newCounter = new Counter(targetWord, targetPhrase);
             int expected = 0;
 
-            int result = newCounter.GetPluralCount();
+            int result = newCounter.PluralCount;
             Assert.AreEqual(expected, result);
         }
 
@@ -111,10 +103,11 @@ namespace WordCounterTests
         public void GetPartialCount_ReturnNumberOfPartialMatches_int()
         {
             string targetWord = "dog";
-            Counter newCounter = new Counter(targetWord);
+            string targetPhrase = "My cat is rude";
+            Counter newCounter = new Counter(targetWord, targetPhrase);
             int expected = 0;
 
-            int result = newCounter.GetPartialCount();
+            int result = newCounter.PartialCount;
             Assert.AreEqual(expected, result);
         }
 
@@ -122,11 +115,11 @@ namespace WordCounterTests
         public void ScanForPartials_ReturnListofPartialTargetMatches_List()
         {
             string targetWord = "dog";
-            string stringToScan = "doggies like dogtreats shaped like dogs";
+            string targetPhrase = "doggies like dogtreats shaped like dogs";
             List<string> expectedList = new List<string> { "doggies", "dogtreats" };
-            Counter newCounter = new Counter(targetWord);
+            Counter newCounter = new Counter(targetWord, targetPhrase);
 
-            List<string> returnedList = newCounter.ScanForPartials(stringToScan);
+            List<string> returnedList = newCounter.ScanForPartials();
             CollectionAssert.AreEqual(expectedList, returnedList);
         }
 
@@ -135,8 +128,9 @@ namespace WordCounterTests
         {
             string targetWord1 = "cat";
             string targetWord2 = "dog";
-            Counter counter1 = new Counter(targetWord1);
-            Counter counter2 = new Counter(targetWord2);
+            string targetPhrase = "I own one cat and one dog";
+            Counter counter1 = new Counter(targetWord1, targetPhrase);
+            Counter counter2 = new Counter(targetWord2, targetPhrase);
 
             List<Counter> expected = new List<Counter> { counter1, counter2};
 
