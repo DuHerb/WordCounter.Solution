@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WordCounterModels
 {
-    public class WordCounter
+    public class Counter
     {
         private string _targetWord;
         private int _targetCount = 0;
@@ -11,9 +11,9 @@ namespace WordCounterModels
 
         private int _partialTargetCount = 0;
 
-        private static List<WordCounter> _counterList = new List<WordCounter> {};
+        private static List<Counter> _counterList = new List<Counter> {};
 
-        public WordCounter (string userInput)
+        public Counter(string userInput)
         {
             _targetWord = userInput;
             _counterList.Add(this);
@@ -96,7 +96,7 @@ namespace WordCounterModels
             return partialMatches;
         }
 
-        public static List<WordCounter> GetAll()
+        public static List<Counter> GetAll()
         {
             return _counterList;
         }

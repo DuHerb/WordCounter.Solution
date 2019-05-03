@@ -1,26 +1,21 @@
-using System;
-using System.Collections.Generic;
-using WordCounterModels;
 
-namespace MainWordCounter
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+
+namespace WordCounter
 {
-    public class Program
+  public class Program
+  {
+    public static void Main(string[] args)
     {
-        public static void Main()
-        {
-            bool isCounting = true;
+      var host = new WebHostBuilder()
+        .UseKestrel()
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseIISIntegration()
+        .UseStartup<Startup>()
+        .Build();
 
-            while(isCounting)
-            {
-            Console.WriteLine("Enter a word that you'd like to track: ");
-            WordCounter counter = new WordCounter(Console.ReadLine());
-            Console.WriteLine("Your are now tracking the word '"+ counter.GetTargetWord() + "'");
-            Console.WriteLine("");
-            Console.WriteLine("Enter a sentence you would like to scan for '" + counter.GetTargetWord() + "'");
-            counter.ScanForTarget(Console.ReadLine());
-            Console.WriteLine("The word '" + counter.GetTargetWord() + "' appeared in your sentence " + counter.GetTargetCount() + " times.");
-            isCounting = false;
-            }
-        }
+      host.Run();
     }
+  }
 }

@@ -11,22 +11,22 @@ namespace WordCounterTests
 
         public void Dispose()
         {
-            WordCounter.ClearAll();
+            Counter.ClearAll();
         }
 
         [TestMethod]
-        public void WordCounterConstructor_CreateObjectInstance_WordCounter()
+        public void CounterConstructor_CreateObjectInstance_Counter()
         {
-            WordCounter newWordCounter = new WordCounter("test");
-            Assert.AreEqual(typeof(WordCounter), newWordCounter.GetType());
+            Counter newCounter = new Counter("test");
+            Assert.AreEqual(typeof(Counter), newCounter.GetType());
         }
          [TestMethod]
         public void GetTargetWord_ReturnsTargetWord_String()
         {
             string targetWord = "cat";
-            WordCounter newWordCounter = new WordCounter("cat");
+            Counter newCounter = new Counter("cat");
 
-            string result = newWordCounter.GetTargetWord();
+            string result = newCounter.GetTargetWord();
 
             Assert.AreEqual(targetWord, result);
         }
@@ -36,7 +36,7 @@ namespace WordCounterTests
         {
             string oldTarget = "cat";
             string newTarget = "dog";
-            WordCounter newCounter = new WordCounter(oldTarget);
+            Counter newCounter = new Counter(oldTarget);
 
             newCounter.SetTargetWord(newTarget);
             string result = newCounter.GetTargetWord();
@@ -49,7 +49,7 @@ namespace WordCounterTests
         {
             string targetWord = "dog";
             string stringToScan = "I own a dog";
-            WordCounter newCounter = new WordCounter(targetWord);
+            Counter newCounter = new Counter(targetWord);
             int expected = 1;
 
             newCounter.ScanForTarget(stringToScan);
@@ -62,7 +62,7 @@ namespace WordCounterTests
         public void GetTargetCount_ReturnTargetCount_Int()
         {
             string targetWord = "dog";
-            WordCounter newCounter = new WordCounter(targetWord);
+            Counter newCounter = new Counter(targetWord);
             int expected = 0;
 
             int result = newCounter.GetTargetCount();
@@ -75,7 +75,7 @@ namespace WordCounterTests
         {
             string userTarget = "dog";
             bool expected = true;
-            WordCounter newCounter = new WordCounter(userTarget);
+            Counter newCounter = new Counter(userTarget);
 
             bool result = newCounter.IsTargetValid(userTarget);
 
@@ -87,7 +87,7 @@ namespace WordCounterTests
         {
             string targetWord = "dog";
             string stringToScan = "My dog owns several dogs that love hot dogs";
-            WordCounter newCounter = new WordCounter(targetWord);
+            Counter newCounter = new Counter(targetWord);
             int expected = 2;
 
             newCounter.ScanForPlurals(stringToScan);
@@ -100,7 +100,7 @@ namespace WordCounterTests
         public void GetPluralCount_ReturnNumberOfPluralTarget_int()
         {
             string targetWord = "dog";
-            WordCounter newCounter = new WordCounter(targetWord);
+            Counter newCounter = new Counter(targetWord);
             int expected = 0;
 
             int result = newCounter.GetPluralCount();
@@ -111,7 +111,7 @@ namespace WordCounterTests
         public void GetPartialCount_ReturnNumberOfPartialMatches_int()
         {
             string targetWord = "dog";
-            WordCounter newCounter = new WordCounter(targetWord);
+            Counter newCounter = new Counter(targetWord);
             int expected = 0;
 
             int result = newCounter.GetPartialCount();
@@ -124,23 +124,23 @@ namespace WordCounterTests
             string targetWord = "dog";
             string stringToScan = "doggies like dogtreats shaped like dogs";
             List<string> expectedList = new List<string> { "doggies", "dogtreats" };
-            WordCounter newCounter = new WordCounter(targetWord);
+            Counter newCounter = new Counter(targetWord);
 
             List<string> returnedList = newCounter.ScanForPartials(stringToScan);
             CollectionAssert.AreEqual(expectedList, returnedList);
         }
 
         [TestMethod]
-        public void GetAll_ReturnsListOfWordCounters_List()
+        public void GetAll_ReturnsListOfCounters_List()
         {
             string targetWord1 = "cat";
             string targetWord2 = "dog";
-            WordCounter counter1 = new WordCounter(targetWord1);
-            WordCounter counter2 = new WordCounter(targetWord2);
+            Counter counter1 = new Counter(targetWord1);
+            Counter counter2 = new Counter(targetWord2);
 
-            List<WordCounter> expected = new List<WordCounter> { counter1, counter2};
+            List<Counter> expected = new List<Counter> { counter1, counter2};
 
-            List<WordCounter> result = WordCounter.GetAll();
+            List<Counter> result = Counter.GetAll();
             CollectionAssert.AreEqual(expected, result);
         }
     }
