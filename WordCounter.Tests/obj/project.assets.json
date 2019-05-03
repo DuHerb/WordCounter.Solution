@@ -5840,11 +5840,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/WordCounter.Tests.csproj",
+      "projectUniqueName": "/Users/duherb/Desktop/word-counter/WordCounter.Tests/WordCounter.Tests.csproj",
       "projectName": "WordCounter.Tests",
-      "projectPath": "/Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/WordCounter.Tests.csproj",
+      "projectPath": "/Users/duherb/Desktop/word-counter/WordCounter.Tests/WordCounter.Tests.csproj",
       "packagesPath": "/Users/duherb/.nuget/packages/",
-      "outputPath": "/Users/duherb/Desktop/WordCounter.Solution/WordCounter.Tests/obj/",
+      "outputPath": "/Users/duherb/Desktop/word-counter/WordCounter.Tests/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -5861,8 +5861,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/Users/duherb/Desktop/WordCounter.Solution/WordCounter/WordCounter.csproj": {
-              "projectPath": "/Users/duherb/Desktop/WordCounter.Solution/WordCounter/WordCounter.csproj"
+            "/Users/duherb/Desktop/word-counter/WordCounter/WordCounter.csproj": {
+              "projectPath": "/Users/duherb/Desktop/word-counter/WordCounter/WordCounter.csproj"
             }
           }
         }
