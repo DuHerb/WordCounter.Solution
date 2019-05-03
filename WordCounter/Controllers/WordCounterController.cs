@@ -20,11 +20,18 @@ namespace WordCounter.Controllers
             return View();
         }
 
-        [HttpPost("/wordcounters")]
+        // [HttpPost("/wordcounters")]
+        // public ActionResult Create(string targetWord, string targetPhrase)
+        // {
+        //     Counter newCounter = new Counter(targetWord, targetPhrase);
+        //     return RedirectToAction("Index");
+        // }
+
+        [HttpPost("/wordcounters/show")]
         public ActionResult Create(string targetWord, string targetPhrase)
-        {
+                {
             Counter newCounter = new Counter(targetWord, targetPhrase);
-            return RedirectToAction("Index");
+            return View("Show", newCounter);
         }
     }
 }
