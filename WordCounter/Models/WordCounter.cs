@@ -14,7 +14,9 @@ namespace WordCounter.Models
         private int _counterId ;
         private static List<Counter> _counterList = new List<Counter> {};
 
-        private static Dictionary<string, List<Counter>> _wordBook= new Dictionary<string, List<Counter>>();
+        private static List<string> _targetWordList = new List<string> {};
+
+        // private static Dictionary<string, List<Counter>> _wordBook= new Dictionary<string, List<Counter>>();
 
         //Constructor
         public Counter(string userWord, string userPhrase)
@@ -24,6 +26,7 @@ namespace WordCounter.Models
             ScanForTarget();
             ScanForPlurals();
             ScanForPartials();
+            // AddToDictionary();
             _counterList.Add(this);
             _counterId = _counterList.Count;
         }
@@ -38,19 +41,21 @@ namespace WordCounter.Models
             return false;
         }
 
+// Dictionary Sorting not worked out.  TODO: Put objects into dictionary with Key being unique
+//Target words, and Value being a list of all objects with Key as _targetWord
         //Create new dictionary key/value pair for unique targetWords, or adds Counter object to the value matching it's targetWord/key
-        private void AddToDictionary(Counter thisCounter)
-        {
-            if(_wordBook.ContainsKey(thisCounter.TargetWord))
-            {
-                _wordBook[thisCounter.TargetWord].Add(thisCounter);
-            }
-            else
-            {
-                List<Counter> newList = new List<Counter> {thisCounter};
-                _wordBook.Add(thisCounter.TargetWord, newList);
-            }
-        }
+        // private void AddToDictionary()
+        // {
+        //     if(_wordBook.ContainsKey(_targetWord))
+        //     {
+        //         _wordBook[_targetWord].Add(this);
+        //     }
+        //     else
+        //     {
+        //         List<Counter> newList = new List<Counter> {this};
+        //         _wordBook.Add(_targetWord, newList);
+        //     }
+        // }
 
         //Getter/Setters
         public string TargetWord { get => _targetWord; set => _targetWord = value;}
@@ -112,6 +117,11 @@ namespace WordCounter.Models
             return _counterList;
         }
 
+        public static List<string> GetTargetWords()
+        {
+            return _targetWordList;
+        }
+
         public static void ClearAll() => _counterList.Clear();
 
         public static Counter FindCounterById(int id)
@@ -119,9 +129,9 @@ namespace WordCounter.Models
             return _counterList[id-1];
         }
 
-        public static Dictionary<string, List<Counter>> GetWordBook()
-        {
-            return _wordBook;
-        }
+        // public static Dictionary<string, List<Counter>> GetWordBook()
+        // {
+        //     return _wordBook;
+        // }
     }
 }
