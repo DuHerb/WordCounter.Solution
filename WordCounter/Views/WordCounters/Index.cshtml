@@ -8,7 +8,8 @@
 
 @foreach (var counter in Model)
 {
-  <h3><a href='/wordcounters/@counter.TargetWord'>@counter.TargetWord</a></h3>
+  <h3><a href='/wordcounters/@counter.GetId()'>@counter.TargetWord</a></h3>
 }
 
-<!-- <p><a href='/'>Back home</a></p> -->
+<p><a href='/'>Back home</a></p>
+<p><a href='/wordcounters/new'>New Word</a></p>

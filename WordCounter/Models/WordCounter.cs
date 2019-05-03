@@ -10,6 +10,8 @@ namespace WordCounter.Models
         private int _targetCount = 0;
         private int _pluralCount = 0;
         private int _partialCount = 0;
+
+        private int _counterId ;
         private static List<Counter> _counterList = new List<Counter> {};
 
         //Constructor
@@ -21,6 +23,7 @@ namespace WordCounter.Models
             ScanForPlurals();
             ScanForPartials();
             _counterList.Add(this);
+            _counterId = _counterList.Count;
         }
 
         //Validate input data type
@@ -40,6 +43,9 @@ namespace WordCounter.Models
         public int PluralCount { get => _pluralCount; set => _pluralCount = value;}
         public int PartialCount { get => _partialCount; set => _partialCount = value;}
 
+        public int GetId() => _counterId;
+
+        //Scan Methods
         public void ScanForTarget()
         {
             // string phraseToScan = _targetPhrase;
@@ -54,7 +60,6 @@ namespace WordCounter.Models
             }
         }
 
-        //Scan Methods
         public void ScanForPlurals()
         {
             // string phraseToScan = _targetPhrase;
@@ -92,5 +97,10 @@ namespace WordCounter.Models
         }
 
         public static void ClearAll() => _counterList.Clear();
+
+        public static Counter FindCounterById(int id)
+        {
+            return _counterList[id-1];
+        }
     }
 }

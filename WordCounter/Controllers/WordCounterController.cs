@@ -33,5 +33,12 @@ namespace WordCounter.Controllers
             Counter newCounter = new Counter(targetWord, targetPhrase);
             return View("Show", newCounter);
         }
+
+        [HttpGet("/wordcounters/{id}")]
+        public ActionResult Show(int id)
+        {
+            Counter selectedCounter = Counter.FindCounterById(id);
+            return View(selectedCounter);
+        }
     }
 }
