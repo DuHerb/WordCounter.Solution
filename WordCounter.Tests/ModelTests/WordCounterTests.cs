@@ -111,7 +111,7 @@ namespace WordCounterTests
             Assert.AreEqual(expected, result);
         }
 
-        //Function ScanForPartials not long returns a List object
+        //Function ScanForPartials no longer returns a List object
         // [TestMethod]
         // public void ScanForPartials_ReturnListofPartialTargetMatches_Int()
         // {
@@ -138,5 +138,30 @@ namespace WordCounterTests
             List<Counter> result = Counter.GetAll();
             CollectionAssert.AreEqual(expected, result);
         }
+
+// Dictionary tests......Not Working as expected.  TODO: Rewrite tests
+        // [TestMethod]
+        // public void GetWordBook_ReturnDictionaryOfUniqueTargetWords_Dictionary()
+        // {
+        //     string targetWord = "cat";
+        //     string targetPhrase = "i own a cat";
+        //     Counter newCounter = new Counter(targetWord, targetPhrase);
+        //     Dictionary<string, List<Counter>> result = Counter.GetWordBook();
+        //     Assert.AreEqual(typeof(Dictionary<string, List<Counter>>), result.GetType());
+        // }
+
+        // public void AddToDictionary_AddUniqueTargetWordObjectsToWordBook_Dictionary()
+        // {
+        //     string targetWord = "cat";
+        //     string targetPhrase = "i own a cat";
+        //     string targetWord2 = "cat";
+        //     string targetPhrase2 = "my cat wants me dead";
+        //     Counter newCounter = new Counter(targetWord, targetPhrase);
+        //     Counter newCounter2 = new Counter(targetWord2, targetPhrase2);
+        //     List<Counter> newList = new List<Counter> {newCounter, newCounter2};
+        //     Dictionary<string, List<Counter>> expected = new Dictionary<string, List<Counter>> { {"cat", newList }};
+        //     Dictionary<string, List<Counter>> result = Counter.GetWordBook();
+        //     CollectionAssert.AreEqual(expected, result);
+        // }
     }
 }
