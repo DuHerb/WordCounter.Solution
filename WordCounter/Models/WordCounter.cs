@@ -14,6 +14,8 @@ namespace WordCounter.Models
         private int _counterId ;
         private static List<Counter> _counterList = new List<Counter> {};
 
+        private static Dictionary<string, List<Counter>> _wordBook= new Dictionary<string, List<Counter>>();
+
         //Constructor
         public Counter(string userWord, string userPhrase)
         {
@@ -34,6 +36,20 @@ namespace WordCounter.Models
                 return true;
             }
             return false;
+        }
+
+        //Create new dictionary key/value pair for unique targetWords, or adds Counter object to the value matching it's targetWord/key
+        private void AddToDictionary(Counter thisCounter)
+        {
+            if(_wordBook.ContainsKey(thisCounter.TargetWord))
+            {
+                _wordBook[thisCounter.TargetWord].Add(thisCounter);
+            }
+            else
+            {
+                List<Counter> newList = new List<Counter> {thisCounter};
+                _wordBook.Add(thisCounter.TargetWord, newList);
+            }
         }
 
         //Getter/Setters
@@ -101,6 +117,11 @@ namespace WordCounter.Models
         public static Counter FindCounterById(int id)
         {
             return _counterList[id-1];
+        }
+
+        public static Dictionary<string, List<Counter>> GetWordBook()
+        {
+            return _wordBook;
         }
     }
 }

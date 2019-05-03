@@ -138,5 +138,15 @@ namespace WordCounterTests
             List<Counter> result = Counter.GetAll();
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void GetWordBook_ReturnDictionaryOfUniqueTargetWords_Dictionary()
+        {
+            string targetWord = "cat";
+            string targetPhrase = "i own a cat";
+            Counter newCounter = new Counter(targetWord, targetPhrase);
+            Dictionary<string, List<Counter>> result = Counter.GetWordBook();
+            Assert.AreEqual(typeof(Dictionary<string, List<Counter>>), result.GetType());
+        }
     }
 }
